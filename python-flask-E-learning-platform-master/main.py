@@ -31,10 +31,13 @@ import socket
 import webview
 import threading
 
-sys.setdefaultencoding("utf-8")
+if sys.version[0] == '2':
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
+#sys.setdefaultencoding("utf-8")
 app=Flask(__name__)
 app.config["UPLOAD"]="static/img"
-conn = mysql.connector.connect(host="127.0.0.1",user="phpmyadmin",password="root",database="teach-me")
+conn = mysql.connector.connect(host="127.0.0.1",user="root",password="YOUR_PASSWORD_HERE",database="teach_me")
 cursor = conn.cursor()
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 def cookiegenrator():
@@ -184,17 +187,18 @@ def generate_certification(first_name,last_name):
     img.save('sample-out.jpg')
 
 def backup():
-    DB_NAME = 'teach-me'
-    BACKUP_PATH ='/home/walid/Desktop/pfe/bak'
+    DB_NAME = 'teach_me'
+    BACKUP_PATH ='~/Online_University_Mostafa_Attiya-/python-flask-E-learning-platform-master/backup'
     DB_HOST = 'localhost' 
-    DB_USER = 'phpmyadmin'
-    DB_USER_PASSWORD ='root'
+    DB_USER = 'root'
+    DB_USER_PASSWORD ='YOUR_PASSWORD_HERE'
     DATETIME = time.strftime('%Y%m%d-%H%M%S')
-    TODAYBACKUPPATH = BACKUP_PATH + '/' + DATETIME 
+    TODAYBACKUPPATH = BACKUP_PATH + '/' + DATETIME
     try:
         os.stat(TODAYBACKUPPATH)
     except:
-        os.mkdir(TODAYBACKUPPATH)
+        os.walk(TODAYBACKUPPATH)
+    #os.chdir(TODAYBACKUPPATH)
     db = DB_NAME
     dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + pipes.quote(TODAYBACKUPPATH) + "/" + db + ".sql"
     os.system(dumpcmd)
