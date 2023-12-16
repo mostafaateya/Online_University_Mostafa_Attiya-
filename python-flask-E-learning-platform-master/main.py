@@ -37,7 +37,7 @@ if sys.version[0] == '2':
 #sys.setdefaultencoding("utf-8")
 app=Flask(__name__)
 app.config["UPLOAD"]="static/img"
-conn = mysql.connector.connect(host="127.0.0.1",user="root",password="YOUR_PASSWORD_HERE",database="teach_me")
+conn = mysql.connector.connect(host="127.0.0.1",user="mostafa",password="YOUR_PASSWORD_HERE",database="teach_me")
 cursor = conn.cursor()
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 def cookiegenrator():
@@ -190,7 +190,7 @@ def backup():
     DB_NAME = 'teach_me'
     BACKUP_PATH ='~/Online_University_Mostafa_Attiya-/python-flask-E-learning-platform-master/backup'
     DB_HOST = 'localhost' 
-    DB_USER = 'root'
+    DB_USER = 'mostafa'
     DB_USER_PASSWORD ='YOUR_PASSWORD_HERE'
     DATETIME = time.strftime('%Y%m%d-%H%M%S')
     TODAYBACKUPPATH = BACKUP_PATH + '/' + DATETIME
