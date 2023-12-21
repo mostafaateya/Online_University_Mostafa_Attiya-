@@ -195,6 +195,7 @@ def backup():
     DB_USER_PASSWORD ='0114.80.455.41Mm'
     DATETIME = time.strftime('%Y%m%d-%H%M%S')
     TODAYBACKUPPATH = BACKUP_PATH + '/' + DATETIME
+    command = shlex.split(TODAYBACKUPPATH)
     try:
         os.stat(TODAYBACKUPPATH)
     except:
@@ -202,10 +203,10 @@ def backup():
     #os.chdir(TODAYBACKUPPATH)
     db = DB_NAME
     # dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + pipes.quote(TODAYBACKUPPATH) + "/" + db + ".sql"
-    dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + shlex.split(TODAYBACKUPPATH[0]) + "/" + db + ".sql"
+    dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + command[0] + "/" + db + ".sql"
     os.system(dumpcmd)
     # gzipcmd = "gzip " + pipes.quote(TODAYBACKUPPATH) + "/" + db + ".sql"
-    gzipcmd = "gzip " + shlex.split(TODAYBACKUPPATH[0]) + "/" + db + ".sql"
+    gzipcmd = "gzip " + command[0] + "/" + db + ".sql"
     os.system(gzipcmd)
         
 def gen_frames():
