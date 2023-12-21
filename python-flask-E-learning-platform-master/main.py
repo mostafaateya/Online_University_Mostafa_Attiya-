@@ -201,7 +201,7 @@ def backup():
     # except:
         # os.walk(TODAYBACKUPPATH)
         # os.chdir(TODAYBACKUPPATH)
-        os.mkdir(TODAYBACKUPPATH)
+        os.system("mkdir " + TODAYBACKUPPATH)
     db = DB_NAME
     # dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + pipes.quote(TODAYBACKUPPATH) + "/" + db + ".sql"
     dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + command[0] + "/" + db + ".sql"
