@@ -202,10 +202,10 @@ def backup():
     #os.chdir(TODAYBACKUPPATH)
     db = DB_NAME
     # dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + pipes.quote(TODAYBACKUPPATH) + "/" + db + ".sql"
-    dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + shlex.split(TODAYBACKUPPATH) + "/" + db + ".sql"
+    dumpcmd = "mysqldump -h " + DB_HOST + " -u " + DB_USER + " -p" + DB_USER_PASSWORD + " " + db + " > " + shlex.split(TODAYBACKUPPATH[0]) + "/" + db + ".sql"
     os.system(dumpcmd)
     # gzipcmd = "gzip " + pipes.quote(TODAYBACKUPPATH) + "/" + db + ".sql"
-    gzipcmd = "gzip " + shlex.split(TODAYBACKUPPATH) + "/" + db + ".sql"
+    gzipcmd = "gzip " + shlex.split(TODAYBACKUPPATH[0]) + "/" + db + ".sql"
     os.system(gzipcmd)
         
 def gen_frames():
