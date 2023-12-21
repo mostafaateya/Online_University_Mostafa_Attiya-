@@ -196,9 +196,9 @@ def backup():
     DATETIME = time.strftime('%Y%m%d-%H%M%S')
     TODAYBACKUPPATH = BACKUP_PATH + '/' + DATETIME
     command = shlex.split(TODAYBACKUPPATH)
-    try:
+    # try:
         # os.stat(TODAYBACKUPPATH)
-    except:
+    # except:
         # os.walk(TODAYBACKUPPATH)
         # os.chdir(TODAYBACKUPPATH)
         os.mkdir(TODAYBACKUPPATH)
