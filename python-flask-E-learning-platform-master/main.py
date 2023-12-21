@@ -189,7 +189,7 @@ def generate_certification(first_name,last_name):
 
 def backup():
     DB_NAME = 'teach_me'
-    BACKUP_PATH ='~/Online_University_Mostafa_Attiya-/python-flask-E-learning-platform-master/backup'
+    BACKUP_PATH ='~/Desktop/Online_University_Mostafa_Attiya-/python-flask-E-learning-platform-master/backup'
     DB_HOST = 'localhost' 
     DB_USER = 'mostafa'
     DB_USER_PASSWORD ='0114.80.455.41Mm'
